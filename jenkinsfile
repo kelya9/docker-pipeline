@@ -75,6 +75,16 @@ pipeline {
                 }
            }
         }
-
-    }
+      stage('Docker') { 
+            steps { 
+                script{
+                   'sudo chmod +x dockerbuild.sh'
+                   './dockerbuild.sh       
+                }
+           }
+      }
+  }
 }
+
+ 
+ 
