@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for ((tag=1;tag <20; tag++))
+for ((tag=1;tag <5; tag++))
  do
   echo "$tag"
 sudo docker build -t dockerstore .
