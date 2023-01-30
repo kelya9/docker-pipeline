@@ -8,13 +8,13 @@ pipeline {
     stages {
         stage('gitclone') {
             steps {
-            checkout([$class: 'GitSCM', 'branches': [[name: 'master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kelya9/terraform-pipeline.git']]])
+            checkout([$class: 'GitSCM', 'branches': [[name: 'master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kelya9/docker-pipeline.git']]])
             }
         }
         // stage('check-if-file-exist') {
         //     steps {
         //       script {
-        //         git branch: 'master', url:'https://github.com/kelya9/terraform-pipeline.git'
+        //         git branch: 'master', url:'https://github.com/kelya9/docker-pipeline.git'
         //         sh 'if [ -f "$FILE" ]; then echo "file exist"; else echo "file does not exist." && exit1; fi'
         //       }
         //     }
@@ -71,6 +71,13 @@ pipeline {
              script{
                 sh '''
                     terraform apply "create.tfplan"
+                '''
+        stage('Docker') {
+          steps {
+             script{
+                sh '''
+                    sudo chmod +x dockerbuild.sh
+                    sudo ./dockerbuild.sh
                 '''
                }
             }
