@@ -79,7 +79,7 @@ pipeline {
             steps { 
                 script{
                    sh '''
-                       sudo chmod +x dockerbuild.sh
+                        chmod +x dockerbuild.sh
                        ./dockerbuild.sh   
                    '''  
                 }
