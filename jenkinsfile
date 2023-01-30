@@ -8,13 +8,13 @@ pipeline {
     stages {
         stage('gitclone') {
             steps {
-            checkout([$class: 'GitSCM', 'branches': [[name: 'master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kelya9/docker-pipeline.git']]])
+            checkout([$class: 'GitSCM', 'branches': [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kelya9/docker-pipeline.git']]])
             }
         }
         // stage('check-if-file-exist') {
         //     steps {
         //       script {
-        //         git branch: 'master', url:'https://github.com/kelya9/docker-pipeline.git'
+        //         git branch: 'main', url:'https://github.com/kelya9/docker-pipeline.git'
         //         sh 'if [ -f "$FILE" ]; then echo "file exist"; else echo "file does not exist." && exit1; fi'
         //       }
         //     }
