@@ -72,16 +72,7 @@ pipeline {
                 sh '''
                     terraform apply "create.tfplan"
                 '''
-        stage('Docker') {
-          steps {
-             script{
-                sh '''
-                    sudo chmod +x dockerbuild.sh
-                    sudo ./dockerbuild.sh
-                '''
-               }
-            }
-       }
+        
 
     }
 }
