@@ -1,9 +1,10 @@
 provider "aws" {
-  region= "us-east-1"
+
+  region= var.region
 }
 
 resource "aws_ecr_repository" "registry" {
-  name                 = "dockerstore"
+  name                 = var.aws_ecr_repository_name
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
