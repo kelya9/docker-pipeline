@@ -7,7 +7,7 @@ aws_account_id=$(aws ecr describe-repositories | jq -r '.repositories[0].registr
 num=`docker images | sort -r | awk '{print $2}' |head -1`
 tag=$(echo $num + 1 | bc -l)
 sudo docker build -t $image_name:$tag .
-sudo aws ecr get-login-password --$region | docker login --username AWS --password-stdin $aws_account_id.dkr.ecr.$region.amazonaws.com
+sudo aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $aws_account_id.dkr.ecr.$region.amazonaws.com
 sudo docker tag $image_name:$tag $REMOTE_REPOSITORY:$tag
 sudo docker push $REMOTE_REPOSITORY:$tag
 
