@@ -1,6 +1,6 @@
 #!/bin/bash
-image_name=webapp
-region=us-east-1
+image_name="webapp"
+region="us-east-1"
 REMOTE_REPOSITORY=$(aws ecr describe-repositories | jq -r '.repositories[0].repositoryUri')
 aws_account_id=$(aws ecr describe-repositories | jq -r '.repositories[0].registryId')
 
